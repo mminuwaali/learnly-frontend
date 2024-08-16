@@ -13,7 +13,7 @@ const handleSubmit = async () => await store.dispatch('signup', data)
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="flex flex-col gap-8 w-5/6 md:w-7/12 bg-white py-16 p-8 md:p-14 bg-opacity-80 backdrop-blur-md shadow"
+    class="flex flex-col gap-8 bg-white bg-opacity-80 shadow backdrop-blur-md py-16 p-8 md:p-14 w-5/6 md:w-7/12"
   >
     <header class="flex flex-col items-center w-full">
       <h2 class="font-bold text-xl capitalize">welcome guest</h2>
@@ -27,7 +27,7 @@ const handleSubmit = async () => await store.dispatch('signup', data)
         type="email"
         placeholder="Email"
         v-model="data.email"
-        :disabled="data.loading"
+        :disabled="state.loading"
         class="bg-white shadow px-4 p-2 border-none rounded-md w-full disabled:pointer-events-none outline-none"
       />
       <input
@@ -36,7 +36,7 @@ const handleSubmit = async () => await store.dispatch('signup', data)
         name="username"
         placeholder="Username"
         v-model="data.username"
-        :disabled="data.loading"
+        :disabled="state.loading"
         class="bg-white shadow px-4 p-2 border-none rounded-md w-full disabled:pointer-events-none outline-none"
       />
       <input
@@ -45,7 +45,7 @@ const handleSubmit = async () => await store.dispatch('signup', data)
         type="password"
         v-model="data.password"
         placeholder="Password"
-        :disabled="data.loading"
+        :disabled="state.loading"
         class="bg-white disabled:bg-slate-200 shadow px-4 p-2 border-none rounded-md w-full disabled:pointer-events-none outline-none"
       />
       <input
@@ -54,7 +54,7 @@ const handleSubmit = async () => await store.dispatch('signup', data)
         type="password"
         v-model="data.repeat"
         placeholder="Repeat Password"
-        :disabled="data.loading"
+        :disabled="state.loading"
         class="bg-white disabled:bg-slate-200 shadow px-4 p-2 border-none rounded-md w-full disabled:pointer-events-none outline-none"
       />
 
@@ -70,12 +70,12 @@ const handleSubmit = async () => await store.dispatch('signup', data)
     <div class="flex flex-col gap-1 w-full">
       <button
         type="submit"
-        :disabled="data.loading"
+        :disabled="state.loading"
         class="bg-black disabled:bg-gray-500 py-3 rounded-md w-full font-bold text-center text-sm text-white disabled:cursor-not-allowed"
       >
         Register
       </button>
-      <p v-if="state.error" class="text-red-500 text-sm text-center mt-2">{{ state.error }}</p>
+      <p v-if="state.error" class="mt-2 text-center text-red-500 text-sm">{{ state.error }}</p>
     </div>
   </form>
 </template>
